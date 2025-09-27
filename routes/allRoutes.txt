@@ -1,4 +1,5 @@
 This file is just structure routes and know all of the routes and keep track of them 
 
 GET /
-GET 
+GET /books
+GET /books/:bookId
