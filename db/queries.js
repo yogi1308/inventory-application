@@ -19,6 +19,19 @@ async function getAllAuthors() {
   return rows;
 }
 
+async function getAuthorsBooks(author) {
+  const { rows } = await pool.query(`SELECT DISTINCT * FROM books WHERE author = '${author}'`);
+  return rows;
+}
+
+async function getGenresBooks(genre) {
+  const { rows } = await pool.query(`SELECT * FROM books
+  INNER JOIN book_genres ON books.id = book_genres.book_id
+  WHERE
+    book_genres.genre = '${genre}';`);
+  return rows;
+}
+
 module.exports = {
-  getAllBooks, getAllGenres, getAllAuthors
+  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks
 };
