@@ -1,0 +1,22 @@
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 15px;
+}
+
+.search-container {
+    display: flex;
+    border: 1px solid white;
+    border-radius: 10px;
+    align-items: center;
+    padding: 0.2rem;
+    gap: 1rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}

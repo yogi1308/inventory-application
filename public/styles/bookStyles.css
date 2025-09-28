@@ -1,0 +1,28 @@
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.book-cards {
+    transition: transform 0.2s;
+    position: relative;
+    border-radius: 10px;
+}
+
+.book-cards:hover {
+    transform: scale(1.05);
+}
+
+.book-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-shadow: 0.5px 0.5px 0px black, -0.5px -0.5px 0px black, 0.5px -0.5px 0px black, -0.5px 0.5px 0px black;
+    font-size: 1.5em;
+}
+
+.book-cover {
+    border-radius: 10px;
+    height: 100%;
+}

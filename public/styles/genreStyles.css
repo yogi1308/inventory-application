@@ -1,0 +1,21 @@
+.genre-grid {
+    display: flex;
+    max-width: 100vw;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.genre {
+    position: relative;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgb(16, 16, 16);
+    transition: all 0.3s ease-in;
+    border: 1px solid transparent;
+}
+
+.genre:hover {
+    position: relative;
+    border: 1px solid white;
+    transform: scale(1.1);
+}

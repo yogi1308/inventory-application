@@ -502,78 +502,6 @@ const insert_books = `
         NULL,
         NULL,
         NULL
-    ),
-    (
-        'Dune',
-        'Frank Herbert',
-        412,
-        'Pages',
-        'https://images-na.ssl-images-amazon.com/images/I/91JV0+3pZEL.jpg',
-        'Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the “spice” melange, a drug capable of extending life and enhancing consciousness. Coveted across the known universe, melange is a prize worth killing for... When House Atreides is betrayed, the destruction of Paul’s family will set the boy on a journey toward a destiny greater than he could ever have imagined. And as he evolves into the mysterious man known as Muad''Dib, he will bring to fruition humankind’s most ancient and unattainable dream.',
-        9.0,
-        NULL,
-        'Dune',
-        NULL
-    ),
-    (
-        'Dune Messiah',
-        'Frank Herbert',
-        256,
-        'Pages',
-        'https://images-na.ssl-images-amazon.com/images/I/91O+q9+wQhL.jpg',
-        'Dune Messiah continues the story of Paul Atreides, better known—and feared—as the man christened Muad''Dib. As Emperor of the known universe, he possesses more power than a single man was ever meant to wield. Worshipped as a religious icon by the fanatical Fremen, Paul faces the enmity of the political houses he displaced when he assumed the throne—and a conspiracy conducted from within his own sphere of influence. And even as House Atreides begins to crumble around him from the machinations of his enemies, the true threat to Paul comes to his lover, Chani, and the unborn heir to his family’s dynasty...',
-        8.0,
-        NULL,
-        'Dune',
-        NULL
-    ),
-    (
-        'Children of Dune',
-        'Frank Herbert',
-        416,
-        'Pages',
-        'https://images-na.ssl-images-amazon.com/images/I/91y+8+g4zFL.jpg',
-        'The desert planet of Arrakis has begun to grow green and lush. The life-giving spice is abundant. The nine-year-old royal twins, Leto and Ghanima Atreides, children of the Emperor Paul Muad''Dib, possess their father’s supernormal gifts. But their royal Aunt Alia, who rules the Empire in their name, is succumbing to the evil of the Baron Harkonnen, and the spice-addicted Bene Gesserit are plotting to regain control of the Empire. The future of the Atreides dynasty is threatened, and it is up to the twins to save it.',
-        8.0,
-        NULL,
-        'Dune',
-        NULL
-    ),
-    (
-        'God Emperor of Dune',
-        'Frank Herbert',
-        432,
-        'Pages',
-        'https://images-na.ssl-images-amazon.com/images/I/91+p+q5JmZL.jpg',
-        'Millennia have passed on Arrakis, and the once-desert planet is now a lush green world. Leto Atreides, the son of the world’s savior, the Emperor Paul Muad’Dib, is now a godlike creature, a hybrid of human and sandworm, who has ruled the universe as a tyrant for 3,500 years. His long reign has brought peace and stability to the galaxy, but at a terrible price. With a rebellion on the horizon, Leto must make a choice that will change the course of humanity forever.',
-        8.0,
-        NULL,
-        'Dune',
-        NULL
-    ),
-    (
-        'Heretics of Dune',
-        'Frank Herbert',
-        480,
-        'Pages',
-        'https://images-na.ssl-images-amazon.com/images/I/91+p+q5JmZL.jpg',
-        'The planet Arrakis—now called Rakis—is becoming a desert again. The Lost Ones are returning from the far reaches of space in pursuit of power. And a girl named Sheeana, who can control the great sandworms, is the new messiah. From the remnants of the old Empire, the Bene Gesserit have come to Rakis to take control of the spice and the girl, and to restore their power over the galaxy.',
-        8.0,
-        NULL,
-        'Dune',
-        NULL
-    ),
-    (
-        'Chapterhouse: Dune',
-        'Frank Herbert',
-        464,
-        'Pages',
-        'https://images-na.ssl-images-amazon.com/images/I/91+p+q5JmZL.jpg',
-        'The desert planet of Dune has been destroyed. The remnants of the old Empire have been scattered. The Bene Gesserit, heirs to the power of the spice, are now hunted by a violent and ruthless matriarchal cult, the Honored Matres. The Bene Gesserit must use their wits and their breeding program to survive, and to restore their power over the galaxy.',
-        8.0,
-        NULL,
-        'Dune',
-        NULL
     );
 `;
 
@@ -810,31 +738,7 @@ VALUES
     -- A Clockwork Orange
     (40, (SELECT id FROM genres WHERE name = 'Dystopian'), 'Dystopian', 'A Clockwork Orange'),
     (40, (SELECT id FROM genres WHERE name = 'Sci-Fi'), 'Sci-Fi', 'A Clockwork Orange'),
-    (40, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'A Clockwork Orange'),
-    -- Dune
-    (41, (SELECT id FROM genres WHERE name = 'Sci-Fi'), 'Sci-Fi', 'Dune'),
-    (41, (SELECT id FROM genres WHERE name = 'Fantasy'), 'Fantasy', 'Dune'),
-    (41, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'Dune'),
-    -- Dune Messiah
-    (42, (SELECT id FROM genres WHERE name = 'Sci-Fi'), 'Sci-Fi', 'Dune Messiah'),
-    (42, (SELECT id FROM genres WHERE name = 'Fantasy'), 'Fantasy', 'Dune Messiah'),
-    (42, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'Dune Messiah'),
-    -- Children of Dune
-    (43, (SELECT id FROM genres WHERE name = 'Sci-Fi'), 'Sci-Fi', 'Children of Dune'),
-    (43, (SELECT id FROM genres WHERE name = 'Fantasy'), 'Fantasy', 'Children of Dune'),
-    (43, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'Children of Dune'),
-    -- God Emperor of Dune
-    (44, (SELECT id FROM genres WHERE name = 'Sci-Fi'), 'Sci-Fi', 'God Emperor of Dune'),
-    (44, (SELECT id FROM genres WHERE name = 'Fantasy'), 'Fantasy', 'God Emperor of Dune'),
-    (44, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'God Emperor of Dune'),
-    -- Heretics of Dune
-    (45, (SELECT id FROM genres WHERE name = 'Sci-Fi'), 'Sci-Fi', 'Heretics of Dune'),
-    (45, (SELECT id FROM genres WHERE name = 'Fantasy'), 'Fantasy', 'Heretics of Dune'),
-    (45, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'Heretics of Dune'),
-    -- Chapterhouse: Dune
-    (46, (SELECT id FROM genres WHERE name = 'Sci-Fi'), 'Sci-Fi', 'Chapterhouse: Dune'),
-    (46, (SELECT id FROM genres WHERE name = 'Fantasy'), 'Fantasy', 'Chapterhouse: Dune'),
-    (46, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'Chapterhouse: Dune');
+    (40, (SELECT id FROM genres WHERE name = 'Classic'), 'Classic', 'A Clockwork Orange');
 `
 
 async function main() {
