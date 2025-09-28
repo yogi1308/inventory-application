@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/globalStyles.css">
+    <link rel="stylesheet" href="/styles/bookDetailsStyles.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="book-details">
+        <img src="<%= details.cover %> " alt="" srcset="" class="book-details-cover">
+        <div class="details-text">
+            <h3 class="details-title"><%= details.title %></h3>
+            <p class="details-author"><%=details.author%></p>
+            <p class="details-length"><%=details.length%> <%=details.length_type%></p>
+            <p class="details-rating" ><%=details.rating%> <img src="/icons/star.svg" alt="Star Icon" width="24px" height="24px"></p>
+            <p class="details-synopsis"><%=details.synopsis%></p>
+        </div>
+    </div>
+</body>
+</html>

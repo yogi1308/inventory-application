@@ -1,9 +1,11 @@
 <div class="book-grid">
     <link rel="stylesheet" href="/styles/bookStyles.css">
     <% locals.books.map((book) => { %>
-        <div class="book-cards" >
-            <img src="<%= book.cover %> " alt="" srcset="" class="book-cover">
-            <p class="book-title"><%= book.title %></p>
-        </div>
+        <a href="/book/<%=book.title%>">
+            <div class="book-cards" >
+                <img src="<%= book.cover %> " alt="" srcset="" class="book-cover">
+                <p class="book-title"><%= book.title %></p>
+            </div>
+        </a>
     <% }) %>
 </div>

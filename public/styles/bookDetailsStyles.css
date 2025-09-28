@@ -1,0 +1,14 @@
+.book-details {
+    display: flex;
+    gap: 1rem;
+}
+
+.book-details-cover {
+    width: 20rem;
+    border-radius: 10px;
+}
+
+.details-rating {
+    display: flex;
+    gap: 0.5rem;
+}

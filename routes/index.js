@@ -1,5 +1,5 @@
 const express = require('express')
-const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks} = require("../db/queries.js")
+const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails} = require("../db/queries.js")
 
 const router = express.Router()
 
@@ -21,9 +21,7 @@ router.get("/genres", async (req, res) => {
 });
 
 router.get("/genres/:genre", async (req, res) => {
-    console.log(req.params.genre)
     const allGenresBooks = await getGenresBooks(req.params.genre);
-    console.log(allGenresBooks)
     res.render("index", {
         title: "Library Inventory",
         books: allGenresBooks,
@@ -33,7 +31,6 @@ router.get("/genres/:genre", async (req, res) => {
 
 router.get("/author", async (req, res) => {
     const allAuthors = await getAllAuthors();
-    console.log(allAuthors)
     res.render("author", {
         title: "Library Inventory",
         authors: allAuthors
@@ -41,13 +38,20 @@ router.get("/author", async (req, res) => {
 });
 
 router.get("/author/:author", async (req, res) => {
-    console.log(req.params.author)
     const allAuthorsBooks = await getAuthorsBooks(req.params.author);
-    console.log(allAuthorsBooks)
     res.render("index", {
         title: "Library Inventory",
         books: allAuthorsBooks,
         searchResultsFor: req.params.author
+    });
+});
+
+router.get("/book/:book", async (req, res) => {
+    console.log(req.params.book)
+    const allBookDetails = await getBookDetails(req.params.book);
+    res.render("book-details", {
+        title: "Library Inventory",
+        details: allBookDetails[0],
     });
 });
 

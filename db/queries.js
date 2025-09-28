@@ -5,12 +5,12 @@ const pool = new Pool({
 });
 
 async function getAllBooks() {
-  const { rows } = await pool.query("SELECT * FROM books");
+  const { rows } = await pool.query("SELECT title, cover FROM books");
   return rows;
 }
 
 async function getAllGenres() {
-  const { rows } = await pool.query("SELECT * FROM genres");
+  const { rows } = await pool.query("SELECT DISTINCT name FROM genres");
   return rows;
 }
 
@@ -20,7 +20,7 @@ async function getAllAuthors() {
 }
 
 async function getAuthorsBooks(author) {
-  const { rows } = await pool.query(`SELECT DISTINCT * FROM books WHERE author = '${author}'`);
+  const { rows } = await pool.query(`SELECT DISTINCT * FROM books WHERE author = ${author}`);
   return rows;
 }
 
@@ -28,10 +28,16 @@ async function getGenresBooks(genre) {
   const { rows } = await pool.query(`SELECT * FROM books
   INNER JOIN book_genres ON books.id = book_genres.book_id
   WHERE
-    book_genres.genre = '${genre}';`);
+    book_genres.genre = ${genre};`);
+  return rows;
+}
+
+async function getBookDetails(book) {
+  const { rows } = await pool.query(`SELECT * FROM books WHERE title = '${book}'`);
+  console.log(rows)
   return rows;
 }
 
 module.exports = {
-  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks
+  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails
 };
