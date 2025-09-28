@@ -14,6 +14,11 @@ async function getAllGenres() {
   return rows;
 }
 
+async function getAllAuthors() {
+  const { rows } = await pool.query("SELECT DISTINCT author FROM books");
+  return rows;
+}
+
 module.exports = {
-  getAllBooks, getAllGenres
+  getAllBooks, getAllGenres, getAllAuthors
 };

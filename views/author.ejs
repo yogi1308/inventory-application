@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/globalStyles.css">
+    <link rel="stylesheet" href="styles/genreStyles.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="author-grid">
+        <% authors.map((author) => { %>
+            <div class="author">
+                <%= author.author %>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

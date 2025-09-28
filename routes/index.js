@@ -1,5 +1,5 @@
 const express = require('express')
-const {getAllBooks, getAllGenres} = require("../db/queries.js")
+const {getAllBooks, getAllGenres, getAllAuthors} = require("../db/queries.js")
 
 const router = express.Router()
 
@@ -16,6 +16,15 @@ router.get("/genres", async (req, res) => {
     res.render("genres", {
         title: "Library Inventory",
         genres: allGenres
+    });
+});
+
+router.get("/author", async (req, res) => {
+    const allAuthors = await getAllAuthors();
+    console.log(allAuthors)
+    res.render("author", {
+        title: "Library Inventory",
+        authors: allAuthors
     });
 });
 
