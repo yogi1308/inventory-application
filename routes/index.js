@@ -47,7 +47,6 @@ router.get("/author/:author", async (req, res) => {
 });
 
 router.get("/book/:book", async (req, res) => {
-    console.log(req.params.book)
     const allBookDetails = await getBookDetails(req.params.book);
     res.render("book-details", {
         title: "Library Inventory",
