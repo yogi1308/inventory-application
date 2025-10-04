@@ -37,6 +37,20 @@ async function getBookDetails(book) {
   return rows;
 }
 
+async function updateBookDetails(details) {
+  const { title, author, length, "length-type": lengthType, rating, copies, volumes, series, synopsis, cover } = details;
+  const fullLength = `${length} ${lengthType}`;
+
+  const query = `
+    INSERT INTO books (title, author, length, rating, copies, volumes, series, synopsis, cover)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+  `;
+
+  const values = [title, author, fullLength, rating, copies, volumes, series, synopsis, cover];
+
+  await pool.query(query, values);
+}
+
 module.exports = {
-  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails
+  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails
 };

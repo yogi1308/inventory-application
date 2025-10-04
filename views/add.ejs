@@ -1,0 +1,49 @@
+<button class="add-button" onclick="document.querySelector('.add-dialog').showModal()"></button>
+<div>
+    <dialog class="add-dialog">
+        <form action="add" method="POST" class="add-form">
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div class="length-inputs">
+                <label for="length">Length:</label>
+                <input type="text" id="length" name="length">
+                <label for="length-type">Length Type:</label>
+                <select name="length-type" id="length-type">
+                    <option value="Pages">Pages</option>
+                    <option value="Chapters">Chapters</option>
+                </select>
+            </div>
+            <div class="other-details">
+                <label for="rating">Rating:</label>
+                <input type="number" id="rating" name="rating" min="0" max="10" required>
+                <label for="copies">Copies:</label>
+                <input type="number" id="copies" name="copies" min="0" required>
+                <label for="volumes">Volumes:</label>
+                <input type="number" id="volumes" name="volumes" min="0">
+            </div>
+            <div>
+                <label for="series">Series:</label>
+                <input type="text" id="series" name="series">
+            </div>
+            <div>
+                <label for="synopsis" required>Synopsis:</label>
+                <input type="text" id="synopsis" name="synopsis">
+            </div>
+            <div>
+                <label for="cover">Cover:</label>
+                <input type="text" id="cover" name="cover" required oninput="document.querySelector('.display-cover').style.background = url(document.querySelector('#cover').value)">
+            </div>
+            <div class="form-buttons">
+                <button class="close" onclick="document.querySelector('.add-dialog').close()">Close</button>
+                <button class="submit">Submit</button>
+            </div>
+        </form>
+</div>
+    <div class="display-cover"></div>
+</dialog>

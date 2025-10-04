@@ -1,5 +1,5 @@
 const express = require('express')
-const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails} = require("../db/queries.js")
+const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails} = require("../db/queries.js")
 
 const router = express.Router()
 
@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     res.render("index", {
         title: "Library Inventory",
         books: allBooks,
-        searchResultsFor: null
+        searchResultsFor: null,
     });
 });
 
@@ -25,7 +25,7 @@ router.get("/genres/:genre", async (req, res) => {
     res.render("index", {
         title: "Library Inventory",
         books: allGenresBooks,
-        searchResultsFor: req.params.genre
+        searchResultsFor: req.params.genre,
     });
 });
 
@@ -42,7 +42,7 @@ router.get("/author/:author", async (req, res) => {
     res.render("index", {
         title: "Library Inventory",
         books: allAuthorsBooks,
-        searchResultsFor: req.params.author
+        searchResultsFor: req.params.author,
     });
 });
 
@@ -53,5 +53,15 @@ router.get("/book/:book", async (req, res) => {
         details: allBookDetails[0],
     });
 });
+
+router.post("/add", async (req, res) => {
+    try {
+        await updateBookDetails(req.body);
+        res.redirect("/");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error adding book");
+    }
+})
 
 module.exports = router

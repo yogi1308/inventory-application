@@ -1,0 +1,88 @@
+.add-button {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    color: black;
+    border: 1px solid white;
+}
+
+.add-button:hover {
+    transform: scale(1.2)
+}
+
+.add-button::after {
+    content: '+' ;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-125%, -65%);
+    text-shadow: 0.5px 1px 0px white, -0.5px -0.5px 0px white, 0.5px -0.5px 0px white, -0.5px 1px 0px white;
+    transition: text-shadow 0.3s ease-in;
+}
+
+.add-button:hover::after {
+    text-shadow: 0.5px 0.5px 0px white, -0.5px -0.5px 0px white, 0.5px -0.5px 0px white, -0.5px 0.5px 0px white;
+}
+
+.add-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white
+}
+
+form input {
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid white;
+    width: stretch;
+}
+
+.add-form {
+    display: flex;
+    gap: 1rem;
+    width: min-content;
+    flex-direction: column;
+}
+
+.add-form > div {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+input[type="number"] {
+  width: 5rem;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-buttons > button {
+    background-color: black;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    width: 100%;
+    padding: 0.25rem;
+    cursor: pointer;
+}
