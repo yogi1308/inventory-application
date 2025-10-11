@@ -1,7 +1,11 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-    connectionString: "postgresql://yogi:Yogi@psql123@localhost:5432/books_inventory",
+    connectionString: process.env.DATABASE_URL,
+    // The SSL configuration is required by Render and doesn't harm the Railway deployment
+    ssl: {
+      rejectUnauthorized: false
+    }
 });
 
 async function getAllBooks() {
