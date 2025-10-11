@@ -745,8 +745,12 @@ async function main() {
   console.log("seeding...");
   try {
     const client = new Client({
-        connectionString: "postgresql://yogi:Yogi@psql123@localhost:5432/books_inventory",
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false
+        }
     });
+
     await client.connect();
 
     await client.query(books);
