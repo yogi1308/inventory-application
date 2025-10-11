@@ -1,6 +1,6 @@
 const express = require('express')
 const { body, validationResult } = require("express-validator");
-const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails} = require("../db/queries.js")
+const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails, deleteBook} = require("../db/queries.js")
 
 const router = express.Router()
 let allGenres;
@@ -66,5 +66,10 @@ router.post("/add", async (req, res) => {
         res.status(500).send("Error adding book");
     }
 })
+
+router.get("/delete-book/:id", async (req, res) => {
+    await deleteBook(req.params.id);
+    res.redirect("/")
+});
 
 module.exports = router

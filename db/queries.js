@@ -5,7 +5,7 @@ const pool = new Pool({
 });
 
 async function getAllBooks() {
-  const { rows } = await pool.query("SELECT title, cover FROM books ORDER BY id");
+  const { rows } = await pool.query("SELECT id, title, cover FROM books ORDER BY id");
   return rows;
 }
 
@@ -65,6 +65,10 @@ async function updateBookDetails(details) {
   }
 }
 
+async function deleteBook(id) {
+  await pool.query("DELETE FROM books WHERE id = $1;", [id]);
+}
+
 module.exports = {
-  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails
+  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails, deleteBook
 };

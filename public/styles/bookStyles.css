@@ -27,3 +27,38 @@
     border-radius: 10px;
     height: 100%;
 }
+
+.delete {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    text-shadow: 0.5px 0.5px 0px black, -0.5px -0.5px 0px black, 0.5px -0.5px 0px black, -0.5px 0.5px 0px black;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 2.5px;
+    transform: scale(1.2);
+    z-index: 1;
+}
+
+.edit {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    text-shadow: 0.5px 0.5px 0px black, -0.5px -0.5px 0px black, 0.5px -0.5px 0px black, -0.5px 0.5px 0px black;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 2.5px;
+    transform: scale(1.2);
+    z-index: 1;
+}
+
+.delete:hover, .edit:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.book-cards-with-icons {
+    position: relative;
+}
