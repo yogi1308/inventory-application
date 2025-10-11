@@ -45,7 +45,9 @@
     backdrop-filter: blur(10px);
     border-radius: 10px;
     border: 1px solid white;
-    color: white
+    color: white;
+    max-height: 80vh;
+    overflow: auto;
 }
 
 form input {
@@ -85,4 +87,19 @@ input[type="number"] {
     width: 100%;
     padding: 0.25rem;
     cursor: pointer;
+}
+
+.display-cover {
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+.add-dialog::-webkit-scrollbar {
+  width: 0px;
+}
+
+.cover-input {
+    display: flex;
+    flex: 1rem;
+    flex-direction: column;
 }
