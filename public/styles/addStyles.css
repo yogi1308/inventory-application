@@ -36,7 +36,7 @@
     text-shadow: 0.5px 0.5px 0px white, -0.5px -0.5px 0px white, 0.5px -0.5px 0px white, -0.5px 0.5px 0px white;
 }
 
-.add-dialog {
+.add-dialog, .edit-dialog {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -56,14 +56,14 @@ form input {
     width: 100%;
 }
 
-.add-form {
+.add-form, .edit-form {
     display: flex;
     gap: 1rem;
     width: min-content;
     flex-direction: column;
 }
 
-.add-form > div {
+.add-form > div, .edit-form > div {
     display: flex;
     gap: 1rem;
     flex-direction: row;
@@ -90,13 +90,12 @@ input[type="number"] {
     cursor: pointer;
 }
 
-.display-cover {
+.display-cover, .edit-display-cover {
     border-radius: 10px;
     border: 1px solid white;
     max-width: 200px;
     min-width: 100%
 }
-
 .add-dialog::-webkit-scrollbar {
   width: 0px;
 }

@@ -5,7 +5,7 @@ const pool = new Pool({
 });
 
 async function getAllBooks() {
-  const { rows } = await pool.query("SELECT id, title, cover FROM books ORDER BY id");
+  const { rows } = await pool.query("SELECT * FROM books ORDER BY id");
   return rows;
 }
 

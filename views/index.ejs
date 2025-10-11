@@ -14,5 +14,23 @@
     <% } %>
     <%- include('book-cards', { books: books }) %>
     <%- include('add', { genres: genres }) %>
+
+    <script>
+        function editButtonCliked(book) {
+            const modal = document.querySelector('.edit-dialog');
+            modal.showModal();
+            modal.querySelector('#edit-title').value = book.title;
+            modal.querySelector('#edit-author').value = book.author;
+            modal.querySelector('#edit-length').value = book.length;
+            modal.querySelector('#edit-length-type').value = book.length_type;
+            modal.querySelector('#edit-rating').value = book.rating;
+            modal.querySelector('#edit-copies').value = book.copies;
+            modal.querySelector('#edit-volumes').value = book.volumes;
+            modal.querySelector('#edit-series').value = book.series;
+            modal.querySelector('#edit-synopsis').value = book.synopsis;
+            modal.querySelector('#edit-cover').value = book.cover;
+            modal.querySelector('.edit-display-cover').src = book.cover
+        }
+    </script>
 </body>
 </html>

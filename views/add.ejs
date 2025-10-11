@@ -34,10 +34,9 @@
                     <div class="selected-items" id="selectedItems"></div>
                     <div class="dropdown-arrow">&#9662;</div>
                     <div class="dropdown" id="dropdown">
-                        <input type="hidden" name="genre" id="genre">
+                        <input type="hidden" name="genre" id="genre" />
                         <% locals.genres.map((genre) => { %>
                                 <div data-value="<%=genre.name%>"><%= genre.name%></div>
-                            </input>
                         <% }) %>
                     </div>
                 </div>
