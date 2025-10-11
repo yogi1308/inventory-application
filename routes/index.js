@@ -3,18 +3,20 @@ const { body, validationResult } = require("express-validator");
 const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails} = require("../db/queries.js")
 
 const router = express.Router()
+let allGenres;
 
 router.get("/", async (req, res) => {
     const allBooks = await getAllBooks();
+    allGenres = await getAllGenres();
     res.render("index", {
         title: "Library Inventory",
         books: allBooks,
         searchResultsFor: null,
+        genres: allGenres,
     });
 });
 
 router.get("/genres", async (req, res) => {
-    const allGenres = await getAllGenres();
     res.render("genres", {
         title: "Library Inventory",
         genres: allGenres

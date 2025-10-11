@@ -1,7 +1,7 @@
 <button class="add-button" onclick="document.querySelector('.add-dialog').showModal()"></button>
 
 <dialog class="add-dialog">
-    <form action="add" method="POST" class="add-form">
+    <form action="add" method="POST" class="add-form" onsubmit="document.querySelector('#genre').value =  Array.from(selectedValues).join(',')">
         <div>
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
@@ -28,7 +28,23 @@
             <input type="number" id="volumes" name="volumes" min="0">
         </div>
         <div>
-            <label for="series">Series:</label>
+            Genre
+            <div class="container">
+                <div class="multi-select" id="multiSelect">
+                    <div class="selected-items" id="selectedItems"></div>
+                    <div class="dropdown-arrow">&#9662;</div>
+                    <div class="dropdown" id="dropdown">
+                        <input type="hidden" name="genre" id="genre">
+                        <% locals.genres.map((genre) => { %>
+                                <div data-value="<%=genre.name%>"><%= genre.name%></div>
+                            </input>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="series" >Series:</label>
             <input type="text" id="series" name="series">
         </div>
         <div>
@@ -42,7 +58,55 @@
         <img class="display-cover"></img>
         <div class="form-buttons">
             <button class="close" onclick="document.querySelector('.add-dialog').close()">Close</button>
-            <button type="submit" class="submit">Submit</button>
+            <button type="submit" class="submit" >Submit</button>
         </div>
     </form>
 </dialog>
+
+
+<script>
+const multiSelect = document.getElementById('multiSelect');
+const dropdown = document.getElementById('dropdown');
+const selectedItems = document.getElementById('selectedItems');
+const output = document.getElementById('output');
+const showBtn = document.getElementById('showBtn');
+
+const selectedValues = new Set();
+
+if (multiSelect) {
+  multiSelect.addEventListener('click', () => {
+    multiSelect.classList.toggle('active');
+  });
+}
+
+if (dropdown) {
+  dropdown.addEventListener('click', (e) => {
+    const value = e.target.getAttribute('data-value');
+    const label = e.target.textContent;
+
+    if (value && !selectedValues.has(value)) {
+      selectedValues.add(value);
+
+      const tag = document.createElement('span');
+      tag.innerHTML = `${label} <i data-remove="${value}">&times;</i>`;
+      selectedItems.appendChild(tag);
+    }
+  });
+}
+
+if (selectedItems) {
+  selectedItems.addEventListener('click', (e) => {
+    if (e.target.dataset.remove) {
+      const valueToRemove = e.target.dataset.remove;
+      selectedValues.delete(valueToRemove);
+      e.target.parentElement.remove();
+    }
+  });
+}
+
+document.addEventListener('click', (e) => {
+  if (multiSelect && !multiSelect.contains(e.target)) {
+    multiSelect.classList.remove('active');
+  }
+});
+</script>

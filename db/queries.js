@@ -40,16 +40,27 @@ async function getBookDetails(book) {
 async function updateBookDetails(details) {
   const { title, author, length, rating, copies, volumes, series, synopsis, cover } = details;
   const lengthType = details['length-type'];
+  console.log(details)
 
   const query = `
     INSERT INTO books (title, author, length, length_type, rating, copies, volumes, series, synopsis, cover)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+    RETURNING id;
   `;
 
   const values = [title, author, length, lengthType, rating, copies, volumes, series, synopsis, cover];
-  console.log(values)
+  const returnId = await pool.query(query, values);
 
-  await pool.query(query, values);
+  const genres = details.genre.split(',')
+  for (const genre of genres) {
+    console.log(genre)
+    const queryGenre = `
+    INSERT INTO book_genres (book_id, genre_id, genre, title)
+    VALUES
+      ($1, (SELECT id FROM genres WHERE name = $2), $2, $3);
+    `
+    await pool.query(queryGenre, [returnId.rows[0].id, genre, title])
+  }
 }
 
 module.exports = {

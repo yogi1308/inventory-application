@@ -13,6 +13,6 @@
         <p>Search Results For: "<%= searchResultsFor %>"</p>
     <% } %>
     <%- include('book-cards', { books: books }) %>
-    <%- include('add') %>
+    <%- include('add', { genres: genres }) %>
 </body>
 </html>
