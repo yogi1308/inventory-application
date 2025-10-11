@@ -51,15 +51,17 @@ async function updateBookDetails(details) {
   const values = [title, author, length, lengthType, rating, copies, volumes, series, synopsis, cover];
   const returnId = await pool.query(query, values);
 
-  const genres = details.genre.split(',')
-  for (const genre of genres) {
-    console.log(genre)
-    const queryGenre = `
-    INSERT INTO book_genres (book_id, genre_id, genre, title)
-    VALUES
-      ($1, (SELECT id FROM genres WHERE name = $2), $2, $3);
-    `
-    await pool.query(queryGenre, [returnId.rows[0].id, genre, title])
+  if (details.genre !== '') {
+    const genres = details.genre.split(',')
+    for (const genre of genres) {
+      console.log(genre)
+      const queryGenre = `
+      INSERT INTO book_genres (book_id, genre_id, genre, title)
+      VALUES
+        ($1, (SELECT id FROM genres WHERE name = $2), $2, $3);
+      `
+      await pool.query(queryGenre, [returnId.rows[0].id, genre, title])
+    }
   }
 }
 
