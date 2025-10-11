@@ -38,15 +38,16 @@ async function getBookDetails(book) {
 }
 
 async function updateBookDetails(details) {
-  const { title, author, length, "length-type": lengthType, rating, copies, volumes, series, synopsis, cover } = details;
-  const fullLength = `${length} ${lengthType}`;
+  const { title, author, length, rating, copies, volumes, series, synopsis, cover } = details;
+  const lengthType = details['length-type'];
 
   const query = `
-    INSERT INTO books (title, author, length, rating, copies, volumes, series, synopsis, cover)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    INSERT INTO books (title, author, length, length_type, rating, copies, volumes, series, synopsis, cover)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
   `;
 
-  const values = [title, author, fullLength, rating, copies, volumes, series, synopsis, cover];
+  const values = [title, author, length, lengthType, rating, copies, volumes, series, synopsis, cover];
+  console.log(values)
 
   await pool.query(query, values);
 }
