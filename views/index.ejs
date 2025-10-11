@@ -18,6 +18,7 @@
     <script>
         function editButtonCliked(book) {
             const modal = document.querySelector('.edit-dialog');
+            console.log(book)
             modal.showModal();
             modal.querySelector('#edit-title').value = book.title;
             modal.querySelector('#edit-author').value = book.author;
@@ -30,6 +31,7 @@
             modal.querySelector('#edit-synopsis').value = book.synopsis;
             modal.querySelector('#edit-cover').value = book.cover;
             modal.querySelector('.edit-display-cover').src = book.cover
+            modal.querySelector('#edit-id').value = book.id
         }
     </script>
 </body>

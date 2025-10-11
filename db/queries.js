@@ -37,7 +37,7 @@ async function getBookDetails(book) {
   return rows;
 }
 
-async function updateBookDetails(details) {
+async function addBook(details) {
   const { title, author, length, rating, copies, volumes, series, synopsis, cover } = details;
   const lengthType = details['length-type'];
   console.log(details)
@@ -69,6 +69,30 @@ async function deleteBook(id) {
   await pool.query("DELETE FROM books WHERE id = $1;", [id]);
 }
 
+async function updateBookDetails(details) {
+  const { title, author, length, rating, copies, volumes, series, synopsis, cover, id } = details;
+  const lengthType = details['length-type'];
+
+  const query = `
+    UPDATE books SET
+      title = $1,
+      author = $2,
+      length = $3,
+      length_type = $4,
+      cover = $5,
+      synopsis = $6,
+      rating = $7,
+      copies = $8,
+      series = $9,
+      volumes = $10
+    WHERE id = $11
+  `;
+
+  const values = [title, author, length, lengthType, cover, synopsis, rating, copies, series, volumes, id];
+  console.log(values)
+  await pool.query(query, values);
+}
+
 module.exports = {
-  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails, deleteBook
+  getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, addBook, deleteBook, updateBookDetails
 };

@@ -96,7 +96,7 @@ input[type="number"] {
     max-width: 200px;
     min-width: 100%
 }
-.add-dialog::-webkit-scrollbar {
+.add-dialog::-webkit-scrollbar, .edit-dialog::-webkit-scrollbar {
   width: 0px;
 }
 

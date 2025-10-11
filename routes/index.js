@@ -1,6 +1,6 @@
 const express = require('express')
 const { body, validationResult } = require("express-validator");
-const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, updateBookDetails, deleteBook} = require("../db/queries.js")
+const {getAllBooks, getAllGenres, getAllAuthors, getAuthorsBooks, getGenresBooks, getBookDetails, addBook, deleteBook, updateBookDetails} = require("../db/queries.js")
 
 const router = express.Router()
 let allGenres;
@@ -59,7 +59,7 @@ router.get("/book/:book", async (req, res) => {
 
 router.post("/add", async (req, res) => {
     try {
-        await updateBookDetails(req.body);
+        await addBook(req.body);
         res.redirect("/");
     } catch (error) {
         console.error(error);
@@ -71,5 +71,15 @@ router.get("/delete-book/:id", async (req, res) => {
     await deleteBook(req.params.id);
     res.redirect("/")
 });
+
+router.post("/edit", async (req, res) => {
+    try {
+        await updateBookDetails(req.body);
+        res.redirect("/");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error updating book details");
+    }
+})
 
 module.exports = router
