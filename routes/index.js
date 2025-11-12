@@ -23,28 +23,17 @@ router.get("/genres", async (req, res) => {
     });
 });
 
-// In routes/index.js
-
 router.get("/genres/:genre", async (req, res) => {
-  try {
+    // You need to get BOTH the filtered books AND the list of all genres
     const allGenresBooks = await getGenresBooks(req.params.genre);
-    
-    // --- THIS IS THE MISSING FIX (Line 1) ---
-    // You must also fetch the list of all genres for the 'add' partial
-    const allGenres = await queries.getAllGenres(); // Or whatever your function is named
+    const allGenres = await getAllGenres(); // <--- ADD THIS LINE
 
     res.render("index", {
-      title: "Library Inventory",
-      books: allGenresBooks,
-      searchResultsFor: req.params.genre,
-      
-      // --- THIS IS THE MISSING FIX (Line 2) ---
-      genres: allGenres // Pass the genres list to the template
+        title: "Library Inventory",
+        books: allGenresBooks,
+        searchResultsFor: req.params.genre,
+        genres: allGenres, // <--- AND ADD THIS LINE
     });
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Internal Server Error");
-  }
 });
 
 router.get("/author", async (req, res) => {
