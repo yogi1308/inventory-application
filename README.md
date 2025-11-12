@@ -1,5 +1,6 @@
 # Library Inventory Management System
 [https://inventory-application-ivory.vercel.app/author](https://inventory-application-ivory.vercel.app)
+Might show an internal server error sometimes because the Neon server where the backend is hosted sleeps and might not respond. 
 
 A full-stack web application for managing a library's book inventory. This application allows users to browse, add, edit, and delete books from the inventory. It features a clean and intuitive user interface and a robust backend powered by Node.js and PostgreSQL.
 
