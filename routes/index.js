@@ -46,10 +46,12 @@ router.get("/author", async (req, res) => {
 
 router.get("/author/:author", async (req, res) => {
     const allAuthorsBooks = await getAuthorsBooks(req.params.author);
+    const allAuthors = await getAllAuthors();
     res.render("index", {
         title: "Library Inventory",
         books: allAuthorsBooks,
         searchResultsFor: req.params.author,
+        authors: allAuthors
     });
 });
 
