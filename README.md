@@ -1,5 +1,5 @@
 # Library Inventory Management System
-https://inventory-application-2-o8ru.onrender.com
+https://inventory-application-ivory.vercel.app/author
 
 A full-stack web application for managing a library's book inventory. This application allows users to browse, add, edit, and delete books from the inventory. It features a clean and intuitive user interface and a robust backend powered by Node.js and PostgreSQL.
 
