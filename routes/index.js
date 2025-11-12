@@ -45,14 +45,23 @@ router.get("/author", async (req, res) => {
 });
 
 router.get("/author/:author", async (req, res) => {
+  try {
+    // Fetch all three pieces of data
     const allAuthorsBooks = await getAuthorsBooks(req.params.author);
     const allAuthors = await getAllAuthors();
+    const allGenres = await getAllGenres(); // <--- ADD THIS LINE
+
     res.render("index", {
         title: "Library Inventory",
         books: allAuthorsBooks,
         searchResultsFor: req.params.author,
-        authors: allAuthors
+        authors: allAuthors,
+        genres: allGenres // <--- AND ADD THIS LINE
     });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 router.get("/book/:book", async (req, res) => {
